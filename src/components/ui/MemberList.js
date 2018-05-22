@@ -62,16 +62,6 @@ class MemberList extends Component {
       browserHistory.push(`/MemberList?page=${activePage}`)
       window.scrollTo(0, 0)
     }
-    handleGrievanceChange(activePage) {
-       this.setState({activePage: activePage});
-       url=url1+activePage
-       this.componentDidMount()
-       browserHistory.push(`/MemberList?page=${activePage}`)
-       window.scrollTo(0, 0)
-     }
-     renderMember(member, key) {
-       return (<Member {...member} key={ key } />);
-     }
 
     render() {
     	const { members, loading } = this.state
