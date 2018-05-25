@@ -11,7 +11,7 @@ module.exports = {
 	devServer: {
 		inline: true,
 		contentBase: './dist',
-		port: 3000,
+		port: 4000,
 		devtool: 'eval',
 		hot: true,
 		historyApiFallback: true

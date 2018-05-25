@@ -25,7 +25,6 @@ class Member extends Component {
   const {det} = this.state
     return (
       <div>
-
           <div className="member" style={this.style}>
           <h1><Link to={`/details/${this.props.id}`} style={{ color: 'white' }} >{this.props.id}</Link></h1>
           <h3>Reported by: {user}</h3>
