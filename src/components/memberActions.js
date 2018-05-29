@@ -1,19 +1,21 @@
 import axios from "axios";
 
 console.log("memberActions");
-var url = ''
-var page =''
+let url = ''
+let page = ''
+let route = ''
 
-export function fetchMembers(page = null) {
+export function fetchMembers(page = '') {
   return function(dispatch) {
     dispatch({type: "FETCH_MEMBERS"});
 
-    var route = location.pathname
+    route = location.pathname
     const array = route.split('');
     var page = array[1]
-    console.log(page);
+    console.log("pagee"+page);
 
     if(!page){
+     console.log("in if");
      url = "https://m.nivedhana.world/v1/users/6/feed"
     }
     else{
@@ -32,4 +34,3 @@ export function fetchMembers(page = null) {
       })
   }
 }
-page = ''

@@ -33,7 +33,7 @@ class Member extends React.Component {
     var page = this.props.feed.current_page
     page = page +1
     console.log(page);
-    this.props.history.push(`${page}`)
+    this.props.history.push(`/${page}`)
     console.log("im clicked page:"+page);
   }
 
@@ -66,4 +66,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Member)
-export {}

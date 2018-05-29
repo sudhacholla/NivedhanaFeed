@@ -1,91 +1,56 @@
-import { Component } from 'react'
+import React,{Component} from "react"
+import axios from "axios";
 import { hashHistory,browserHistory, Router, Route,Link,Switch,hashRouter} from 'react-router-dom'
-import Member from './Member'
+import { connect } from "react-redux"
+import { fetchDetails } from "./detailsActions"
 
+@connect((store) => {
+  return {
+    details: store.details.details,
+  };
+})
 
-var url = 'https://m.nivedhana.world/v1/officers/3/grievances/'
-var page =''
-
-class Details extends Component {
+class Details extends React.Component {
   constructor(props) {
       super(props)
-      console.log("Im in details");
-      var route = location.pathname
-      const array = route.split('/');
-      console.log(array);
-      this.page = array[2]
-      console.log(this.page);
-      this.state={
-        det:'',
-        category:'',
-        user:'',
-        current_escalation:''
+      this.state = {
       }
-  }
+    }
 
   componentWillMount() {
   	this.style = {
-  		backgroundColor: 'green',
-      color:'white'
+      color:'green'
   	}
   }
 
-  componentDidMount(){
-    console.log(this.page);
-    url = url+this.page
-    console.log(url);
-    fetch(url, {
-      method: "GET",
-      headers: new Headers({
-        "Authorization": "Bearer CzHmAVVHLGs7zXPL93jSkY1tFc0x0kmPNCeY5EXKVD4AZXtZ3f",
-      }),
-      body: { mobile: 9980758248, },
-      json: true,
-      mode:'cors'
-    })
-        .then(response => response.json())
-        .then(response => {
-          this.setState({det:response}),
-          this.setState({category:response.category}),
-          this.setState({user:response.user}),
-          this.setState({current_escalation:response.current_escalation})
-            })
-
-            url = 'https://m.nivedhana.world/v1/officers/3/grievances/'
+  componentDidMount() {
+    this.props.dispatch(fetchDetails());
   }
 
   render() {
-	const { det,category,user,current_escalation } = this.state
-    return (
-      <div className="details" style={this.style}>
-        <div>
-          <h1>Grievance id :  {det.id}</h1>
-          <h3>user_id :  {det.user_id}</h3>
-          <h3>village_id :  {det.village_id}</h3>
-          <h3>comment :  {det.comment}</h3>
-        </div>
-        <div style={{ backgroundColor: '#777' }}>
-          <h3>category id:   {category.id}</h3>
-          <h3>category name:   {category.name}</h3>
-          <h3>category slug:   {category.slug}</h3>
-          <h3>category image:   {category.image}</h3>
-        </div>
-        <div style={this.style}>
-            <h1>User Name :  {user.name}</h1>
-            <h3>Email :  {user.email}</h3>
-            <h3>Mobile :  {user.mobile}</h3>
-            <h3>Last Login:  {user.last_login}</h3>
-          </div>
-        <div style={{ backgroundColor: '#777' }}>
-          <h3>current_escalation id: {current_escalation.id}</h3>
-          <h3>current_escalation level: {current_escalation.level}</h3>
-          <h3>current_escalation resolution_deadline: {current_escalation.resolution_deadline}</h3>
-          <h3>current_escalation officer_name: {current_escalation.officer_name}</h3>
-          <h3>current_escalation officer_designation: {current_escalation.officer_designation}</h3>
-        </div>
-      </div>
-
-    )
+     const { details } = this.props;
+     console.log(this.props.details);
+     if (!details) {
+       return <button onClick={this.componentDidMount.bind(this)}>Loading....</button>
+     }
+     return (
+       <div style={this.style}>
+          <h2>Grievance Id:     {this.props.details.id}</h2>
+          <h2>user_id:     {this.props.details.user_id}</h2>
+          <h2>Category Id:     {this.props.details.category.id}</h2>
+          <h2>Category Name:     {this.props.details.category.name}</h2>
+          <h2>created_at:    {this.props.details.category.created_at}</h2>
+          <h2>updated_at:    {this.props.details.updated_at}</h2>
+          <h2>Status:     {this.props.details.status}</h2>
+          <h2>User Name:    {this.props.details.user.name}</h2>
+          <h2>Village Name:     {this.props.details.village.name}</h2>
+       </div>
+     )
   }
-}
-export default Details
+};
+
+const mapStateToProps = state => ({
+  details: state.data,
+});
+
+export default connect(mapStateToProps)(Details)

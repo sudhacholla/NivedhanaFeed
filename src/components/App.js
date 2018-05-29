@@ -15,7 +15,6 @@ class App extends Component {
         return (
            <BrowserRouter history={browserHistory}>
              <div>
-               <Route exact path="/hello/" component={Hello} />
                <Route exact path="/details/:id" component={Details} />
                <Route exact path="/" component={Member} />
                <Route exact path="/:page" component={Member} />
