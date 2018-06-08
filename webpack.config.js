@@ -13,7 +13,6 @@ module.exports = {
 		contentBase: './dist',
 		port: 4000,
 		historyApiFallback: true,
-
 	},
 	module: {
 		loaders: [

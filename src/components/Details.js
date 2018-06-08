@@ -19,7 +19,7 @@ class Details extends React.Component {
 
   componentWillMount() {
   	this.style = {
-      color:'green'
+      color:'purple'
   	}
   }
 

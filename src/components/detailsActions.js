@@ -1,28 +1,22 @@
 import axios from "axios";
 
-console.log("detailsActions");
 var url = ''
-var page =''
-
-export function fetchDetails(page = null) {
+var gid =''
+export function fetchDetails(gid) {
   return function(dispatch) {
     dispatch({type: "FETCH_DETAILS"});
 
-    console.log("Im in details");
     var route = location.pathname
-    const array = route.split('/');
+    const array = route.split('=');
     console.log(array);
-    page = array[2]
-    console.log(page);
+    gid = array[1]
+    console.log(gid);
 
-    if(!page){
-     url = "https://m.nivedhana.world/v1/officers/3/grievances/"
-    }
-    else{
+    if(gid){
       console.log("in the loop");
       url = 'https://m.nivedhana.world/v1/officers/3/grievances/'
-      url = url+ page;
-      console.log("page not null"+page);
+      url = url+ gid;
+      console.log("gid not null"+gid);
       console.log(url);
     }
 
@@ -35,4 +29,4 @@ export function fetchDetails(page = null) {
       })
   }
 }
-page = ''
+gid = ''

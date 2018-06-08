@@ -1,25 +1,19 @@
 import { Component } from 'react'
-import Hello from './Details'
-import { hashHistory,browserHistory, Router, Route,Link,Switch,hashRouter} from 'react-router'
+import { hashHistory,browserHistory, Router, Route,Link,Switch,hashRouter} from 'react-router-dom'
 
 
-class Member extends Component {
+class Hello extends Component {
   constructor(props) {
       super(props)
   }
 
-  componentWillMount() {
-  	this.style = {
-  		backgroundColor: 'green',
-      color:'white'
-  	}
-  }
 
   render() {
-
     return (
-          <div className="hello" style={this.style}>
+          <div className="hello">
             <h1>Hello</h1>
+            <Link to = "/member">Go to Nivedhana Feed</Link>
+
           </div>
     )
   }
