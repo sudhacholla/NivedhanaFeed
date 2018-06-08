@@ -27,6 +27,10 @@ class Details extends React.Component {
     this.props.dispatch(fetchDetails());
   }
 
+  handleClick(e){
+    this.props.history.goBack()
+  }
+
   render() {
      const { details } = this.props;
      console.log(this.props.details);
@@ -44,7 +48,9 @@ class Details extends React.Component {
           <h2>Status:     {this.props.details.status}</h2>
           <h2>User Name:    {this.props.details.user.name}</h2>
           <h2>Village Name:     {this.props.details.village.name}</h2>
+          <div><button onClick={(e) => {this.handleClick(e)}}>Back</button></div>
        </div>
+
      )
   }
 };

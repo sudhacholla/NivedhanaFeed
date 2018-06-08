@@ -36,18 +36,20 @@ class Member extends React.Component {
     var page = this.props.feed.current_page
     page = page +1
     console.log(page);
-    this.props.history.push(`?page=${page}`)
+    this.props.history.push(`/member/page=${page}`)
     console.log("im clicked page:"+page);
     this.props.dispatch(fetchMembers(page))
+    window.scrollTo(0, 0)
   }
 
   goBack(e){
     var page = this.props.feed.current_page
     page = page -1
     console.log(page);
-    this.props.history.push(`?page=${page}`)
+    this.props.history.push(`/member/page=${page}`)
     console.log("im clicked page:"+page);
     this.props.dispatch(fetchMembers(page))
+    window.scrollTo(0, 0)
   }
 
   render() {

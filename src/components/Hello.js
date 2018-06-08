@@ -6,14 +6,11 @@ class Hello extends Component {
   constructor(props) {
       super(props)
   }
-
-
   render() {
     return (
           <div className="hello">
             <h1>Hello</h1>
             <Link to = "/member">Go to Nivedhana Feed</Link>
-
           </div>
     )
   }

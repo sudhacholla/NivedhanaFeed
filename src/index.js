@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { browserHistory, Router, Route,Link,Switch } from 'react-router'
 import { hashHistory } from 'react-router'
 import Details from './components/Details'
+import { createHistory } from 'redux-history-sync'
 
 ReactDOM.render( <Provider store={store}>
     <App />
