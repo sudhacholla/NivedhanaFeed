@@ -10,6 +10,7 @@ class Hello extends Component {
     return (
           <div className="hello">
             <h1>Hello</h1>
+            <Link to = "/Grievance">Add New Grievance</Link>
             <Link to = "/member">Go to Nivedhana Feed</Link>
           </div>
     )

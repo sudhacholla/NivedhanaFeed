@@ -1,4 +1,3 @@
-
 export default function reducer(state={
     feed: '',
     fetching: false,

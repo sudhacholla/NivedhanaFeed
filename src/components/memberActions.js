@@ -8,6 +8,9 @@ export function fetchMembers(page) {
   return function(dispatch) {
     dispatch({type: "FETCH_MEMBERS"},page);
 
+    let route = location.pathname
+    const array = route.split('=');
+    let page = array[1]
     if(!page){
      url = "https://m.nivedhana.world/v1/users/6/feed"
     }
